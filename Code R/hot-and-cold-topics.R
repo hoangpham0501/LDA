@@ -26,9 +26,9 @@ theta_mean_lm_coef_slope_pos <- theta_mean_lm_coef_slope[theta_mean_lm_coef_slop
 
 theta_mean_lm_coef_slope_neg <- theta_mean_lm_coef_slope[theta_mean_lm_coef_slope < 0]
 
-p_level <- c(0.05, 0.01, 0.001, 0.0001)
+p_level <- c(0.2, 0.1, 0.01, 0.001)
 significance_total <- sapply(p_level,
-                             function(x) (theta_mean_lm_coef_slope[theta_mean_lm_coef_slope < x]))
+                             function(x) (theta_mean_lm_coef_sign[theta_mean_lm_coef_sign < x]))
 #print(significance_total)
 significance_neg <- sapply(1:length(p_level),
                            function(x) intersect(names(theta_mean_lm_coef_slope_neg),
@@ -37,5 +37,5 @@ significance_pos <- sapply(1:length(p_level),
                            function(x) intersect(names(theta_mean_lm_coef_slope_pos),
                                                  names(significance_total[[x]])))
 
-topics_hot <- as.numeric(names(sort(theta_mean_lm_coef_slope[significance_pos[[4]]], decreasing = TRUE)))
-topics_cold <- as.numeric(names(sort(theta_mean_lm_coef_slope[significance_neg[,4]], decreasing = FALSE)))
+topics_hot <- as.numeric(names(sort(theta_mean_lm_coef_slope[significance_pos[[1]]], decreasing = TRUE)))
+topics_cold <- as.numeric(names(sort(theta_mean_lm_coef_slope[significance_neg[[1]]], decreasing = FALSE)))

@@ -13,7 +13,7 @@ terms_word_cold <- get_terms(model_lda ,10)[, topics_word_cold]
 print( xyplot( cold_and_hot_ts ,layout = c(2, 1) ,
                screens = c(rep("Cold topics", 5) , rep("Hot topics", 5)),
                superpose = TRUE ,
-               ylim = c(0, 0.005) ,
+               ylim = c(0, 0.018) ,
                ylab = expression( paste("Mean",theta )),
                xlab = "Year",
                type = c("l", "g"),

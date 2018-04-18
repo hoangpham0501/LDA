@@ -13,14 +13,13 @@ abstracts_reader <- FunctionGenerator(function(...)
 abstracts_source <- DirSource(directory = "D:\\Visualize Data",
                                  pattern = "\\.abstract\\.txt", recursive = TRUE)
 
-abstracts <- Corpus(abstracts_source, readerControl = list(reader = abstracts_reader, language = "en"))
+abstracts <- Corpus(abstracts_source, readerControl = list(reader = abstracts_reader, language = "english", encoding = "UTF-8"))
 
 #Reformat abstract local paths
 meta_df$abstract_local_path <- paste("./", meta_df$abstract_local_path, sep="")
-
 
 # now metadata can be merged into corpus
 for(name in names(meta_df)[-c(10 ,13 ,14 ,15 ,25)])
   meta(abstracts , tag = name) <- meta_df[name]
 
-save(abstracts , file = "tm-corpus-pnas-abstracts.rda", compress = TRUE)
+save(abstracts , file = "D:\\Visualize Data\\Code R\\tm-corpus-pnas-abstracts.rda", compress = TRUE)

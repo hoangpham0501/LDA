@@ -1,5 +1,4 @@
-library( xtable )
-#print(abstracts$dmeta$year)
+library(xtable)
 frequencies <- t(table(abstracts$dmeta$year))
 rownames(frequencies) <- "Frequency"
 xTable <- xtable(frequencies)
